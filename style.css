@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Uiverse Music Player</title>
-<style>
-/* ================= YOUR ORIGINAL CSS ================= */
+/* From Uiverse.io by narmesh_sah */ 
 .card {
   position: relative;
   width: 400px;
   height: 160px;
-  border-radius: 20px;
+  border-radius: 20Q;
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -24,7 +18,7 @@
   box-shadow: 0 8px 32px 0 #0d2626;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 60px;
+  border-radius: 60Q;
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
@@ -39,12 +33,12 @@
   box-shadow: 0 8px 32px 0 #0d2626;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 15px;
+  border-radius: 15Q;
   border: 1px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
 }
 .music::after {
-  content: "It Ain’t Over ‘Til It’s Over";
+  content: "Uiverse Anthem";
   position: absolute;
   left: 45px;
   width: 130px;
@@ -52,7 +46,7 @@
   font-weight: 600;
 }
 .music::before {
-  content: "Lenny Kravitz";
+  content: "NKS";
   position: absolute;
   bottom: 0;
   left: 45px;
@@ -66,17 +60,17 @@
 .music-control {
   position: absolute;
   right: 0;
-  border-radius: 30px;
+  border-radius: 30Q;
   width: 30%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-.music-control svg, .music-control button {
+.music-control svg {
   cursor: pointer;
 }
-.music-control svg:active, .music-control button:active {
+.music-control svg:active {
   transform: scale(0.9);
 }
 
@@ -101,7 +95,7 @@
   box-shadow: 0 8px 32px 0 #0d2626;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 60px;
+  border-radius: 60Q;
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
@@ -113,7 +107,7 @@
   justify-content: center;
   width: 25%;
   padding: 6px;
-  border-radius: 60px;
+  border-radius: 60Q;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
@@ -197,7 +191,7 @@
   width: 50px;
   height: 50px;
   background-color: #def92e;
-  border-radius: 12px;
+  border-radius: 12Q;
   transform: rotate(45deg);
   animation: move 12s alternate-reverse infinite;
   animation-delay: 6s;
@@ -216,110 +210,3 @@
     transform: translateX(60px) translateY(20px);
   }
 }
-</style>
-</head>
-<body>
-
-<!-- CARD UI -->
-<div class="card">
-
-  <div class="music-bar">
-    <div class="music"></div>
-
-    <div class="music-control">
-      <button id="prev">⏮️</button>
-      <button id="play">▶️</button>
-      <button id="next">⏭️</button>
-    </div>
-  </div>
-
-  <div class="bottom-bar">
-    <div class="nav-bar">
-      <div id="nav-home" class="nav-icons">Home</div>
-      <div id="nav-fav" class="nav-icons">Favorites</div>
-      <div id="nav-lib" class="nav-icons">Library</div>
-      <div id="nav-set" class="nav-icons">Settings</div>
-    </div>
-    <div class="search-bar" id="settings-bar">
-      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" style="width: 50px;">
-      <button id="toggle-mode">🌗</button>
-    </div>
-  </div>
-
-  <div id="page-content" style="position:absolute;top:80px;width:100%;text-align:center;color:white;">Welcome!</div>
-
-</div>
-
-<!-- AUDIO -->
-<audio id="audio" src="your-audio.mp3"></audio>
-
-<script>
-// ================= FUNCTIONALITY =================
-const audio = document.getElementById("audio");
-const playBtn = document.getElementById("play");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
-const volumeSlider = document.getElementById("volume");
-const toggleMode = document.getElementById("toggle-mode");
-
-const navHome = document.getElementById("nav-home");
-const navFav = document.getElementById("nav-fav");
-const navLib = document.getElementById("nav-lib");
-const navSet = document.getElementById("nav-set");
-
-const pageContent = document.getElementById("page-content");
-
-// SONG DATA (placeholder)
-const songs = [
-  {
-    title: "It Ain’t Over ‘Til It’s Over",
-    artist: "Lenny Kravitz",
-    src: "your-audio.mp3",
-    cover: "cover.jpg"
-  }
-];
-
-let currentSong = 0;
-
-// Load Song
-function loadSong(index){
-  const song = songs[index];
-  audio.src = song.src;
-  document.querySelector(".music::after")?.setAttribute("content", song.title);
-  document.querySelector(".music::before")?.setAttribute("content", song.artist);
-}
-
-// Play / Pause
-playBtn.addEventListener("click", ()=>{
-  if(audio.paused){
-    audio.play();
-    playBtn.textContent = "⏸️";
-  } else {
-    audio.pause();
-    playBtn.textContent = "▶️";
-  }
-});
-
-// Volume
-volumeSlider.addEventListener("input", ()=>{
-  audio.volume = volumeSlider.value;
-});
-
-// Light / Dark toggle
-toggleMode.addEventListener("click", ()=>{
-  document.body.classList.toggle("light-mode");
-});
-
-// Nav buttons
-navHome.addEventListener("click", ()=> pageContent.textContent="Home: Main Player");
-navFav.addEventListener("click", ()=> pageContent.textContent="Favorites: It Ain’t Over ‘Til It’s Over");
-navLib.addEventListener("click", ()=> pageContent.textContent="Library: Your uploaded audio");
-navSet.addEventListener("click", ()=> pageContent.textContent="Settings: Light/Dark & Volume");
-
-// Prev / Next placeholders
-prevBtn.addEventListener("click", ()=> alert("Previous song not implemented"));
-nextBtn.addEventListener("click", ()=> alert("Next song not implemented"));
-</script>
-
-</body>
-</html>
